@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Razer Naga V2 HyperSpeed マッピング</title>
+<style>
+  :root {
+    --accent: #44d62c;
+    --accent-dark: #3bc225;
+    --orange: #ff6c00;
+    --orange-dark: #e05f00;
+    --bg: #171717;
+    --panel: #0a0a0a;
+    --card: #1c1c1c;
+    --card-hover: #333333;
+    --card-edit: #1a4a13;
+    --border: #262626;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: #e5e5e5;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Kaku Gothic ProN", sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+    position: relative;
+  }
+  header {
+    width: 100%;
+    max-width: 1100px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  h1 {
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--accent);
+    letter-spacing: 0.02em;
+    margin: 0;
+  }
+  .btns { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  button, .file-btn {
+    font-size: 14px;
+    background: #262626;
+    color: #d4d4d4;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background .15s;
+  }
+  button:hover, .file-btn:hover { background: #333333; }
+  .btn-orange { background: var(--orange); color: white; font-weight: bold; }
+  .btn-orange:hover { background: var(--orange-dark); }
+  .btn-accent { background: var(--accent); color: #0a0a0a; font-weight: bold; }
+  .btn-accent:hover { background: var(--accent-dark); }
+  main {
+    flex: 1;
+    width: 100%;
+    max-width: 1100px;
+    background: var(--panel);
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0,0,0,.4);
+    padding: 24px;
+    display: flex;
+    justify-content: center;
+  }
+  svg { width: 100%; height: auto; max-height: 75vh; user-select: none; }
+  .zone { cursor: pointer; }
+  .anno {
+    position: absolute;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+  }
+  .anno .num { color: var(--accent); font-weight: 900; font-size: 13px; text-shadow: 0 1px 1px rgba(0,0,0,1); }
+  .anno .label { color: white; font-size: 12px; font-weight: bold; text-shadow: 0 2px 2px rgba(0,0,0,1); word-break: break-word; }
+  foreignObject input {
+    width: 100%;
+    background: #171717;
+    border: 2px solid var(--accent);
+    border-radius: 4px;
+    padding: 4px;
+    color: white;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    outline: none;
+    box-shadow: 0 0 10px rgba(68,214,44,.5);
+  }
+  #toast {
+    position: fixed;
+    top: 16px; left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent);
+    color: #0a0a0a;
+    padding: 8px 24px;
+    border-radius: 999px;
+    font-weight: bold;
+    box-shadow: 0 10px 20px rgba(0,0,0,.3);
+    z-index: 999;
+    opacity: 0;
+    transition: opacity .3s;
+    pointer-events: none;
+  }
+  #toast.show { opacity: 1; }
+  footer { margin-top: 16px; color: #666; font-size: 12px; }
+</style>
+</head>
+<body>
+
+<div id="toast"></div>
+
+<header>
+  <h1>Razer Naga V2 HyperSpeed マッピング</h1>
+  <div class="btns">
+    <button id="resetBtn">初期化</button>
+    <label class="file-btn" for="importFile">読込</label>
+    <input type="file" id="importFile" accept=".json" style="display:none">
+    <button id="exportBtn" class="btn-orange">SS形式書き出し</button>
+    <button id="saveBtn" class="btn-accent">JSON保存</button>
+  </div>
+</header>
+
+<main>
+  <svg viewBox="0 0 1000 520" xmlns="http://www.w3.org/2000/svg" id="svgRoot">
+
+    <!-- 上面図 -->
+    <g transform="translate(40, 20)">
+      <text x="180" y="-10" fill="#666" font-size="20" font-weight="bold" text-anchor="middle">上面図</text>
+      <path d="M 70 120 C 50 250, 80 380, 180 400 C 280 380, 310 250, 290 120 C 280 0, 80 0, 70 120 Z" fill="#0f0f0f" stroke="#222" stroke-width="6"/>
+
+      <g class="zone" data-id="1">
+        <path d="M 75 120 C 75 40, 100 20, 165 15 L 165 160 C 120 160, 75 150, 75 120 Z" data-shape/>
+      </g>
+      <g class="zone" data-id="2">
+        <path d="M 285 120 C 285 40, 260 20, 195 15 L 195 160 C 240 160, 285 150, 285 120 Z" data-shape/>
+      </g>
+      <g class="zone" data-id="4">
+        <polygon points="165,70 195,70 180,45" data-shape/>
+      </g>
+      <g class="zone" data-id="3">
+        <rect x="168" y="80" width="24" height="40" rx="4" data-shape/>
+      </g>
+      <g class="zone" data-id="5">
+        <polygon points="165,130 195,130 180,155" data-shape/>
+      </g>
+      <g class="zone" data-id="6">
+        <rect x="45" y="60" width="20" height="40" rx="4" data-shape/>
+      </g>
+      <g class="zone" data-id="7">
+        <rect x="45" y="110" width="20" height="40" rx="4" data-shape/>
+      </g>
+    </g>
+
+    <!-- 側面図 -->
+    <g transform="translate(450, 100)">
+      <text x="240" y="-20" fill="#666" font-size="20" font-weight="bold" text-anchor="middle">側面図</text>
+      <path d="M 10 200 C -10 100, 50 20, 200 20 C 350 20, 460 80, 480 200 C 480 220, 440 250, 240 250 C 40 250, 10 220, 10 200 Z" fill="#0f0f0f" stroke="#222" stroke-width="6"/>
+      <g id="sideButtons"></g>
+    </g>
+
+  </svg>
+</main>
+
+<footer>ローカル保存版（クラウド同期なし）・データはこの端末のブラウザに保存されます</footer>
+
+<script>
+const DEFAULT_KEYMAP = {
+  1: { label: '左クリック', action: 'Left Click' },
+  2: { label: '右クリック', action: 'Right Click' },
+  3: { label: 'ホイールクリック', action: 'Middle Click' },
+  4: { label: 'ホイール上', action: 'Scroll Up' },
+  5: { label: 'ホイール下', action: 'Scroll Down' },
+  6: { label: '左上ボタン1', action: 'DPI Up' },
+  7: { label: '左上ボタン2', action: 'DPI Down' },
+  8: { label: 'サイド 1', action: '1' },
+  9: { label: 'サイド 2', action: '2' },
+  10: { label: 'サイド 3', action: '3' },
+  11: { label: 'サイド 4', action: '4' },
+  12: { label: 'サイド 5', action: '5' },
+  13: { label: 'サイド 6', action: '6' },
+  14: { label: 'サイド 7', action: '7' },
+  15: { label: 'サイド 8', action: '8' },
+  16: { label: 'サイド 9', action: '9' },
+  17: { label: 'サイド 10', action: '0' },
+  18: { label: 'サイド 11', action: '-' },
+  19: { label: 'サイド 12', action: '=' },
+};
+
+const STORAGE_KEY = 'naga-keymap-data';
+let keyMap = JSON.parse(JSON.stringify(DEFAULT_KEYMAP));
+let editingId = null;
+
+function loadFromStorage() {
+  const saved = localStorage.getItem(STORAGE_KEY);
+  if (!saved) return;
+  try {
+    const parsed = JSON.parse(saved);
+    Object.keys(parsed).forEach(id => {
+      if (keyMap[id] && parsed[id].action !== undefined) keyMap[id].action = parsed[id].action;
+    });
+  } catch (e) { console.error('parse failed', e); }
+}
+
+function persist() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(keyMap));
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(showToast._t);
+  showToast._t = setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+const svgNS = "http://www.w3.org/2000/svg";
+
+function buildSideButtons() {
+  const g = document.getElementById('sideButtons');
+  g.innerHTML = '';
+  for (let id = 8; id <= 19; id++) {
+    const n = id - 7;
+    const col = Math.floor((n - 1) / 3);
+    const row = (n - 1) % 3;
+    const bW = 80, bH = 45;
+    const x = 70 + col * (bW + 12);
+    const y = 160 - row * (bH + 12);
+
+    const zone = document.createElementNS(svgNS, 'g');
+    zone.setAttribute('class', 'zone');
+    zone.setAttribute('data-id', id);
+
+    const rect = document.createElementNS(svgNS, 'rect');
+    rect.setAttribute('x', x); rect.setAttribute('y', y);
+    rect.setAttribute('width', bW); rect.setAttribute('height', bH);
+    rect.setAttribute('rx', 6);
+    rect.setAttribute('data-shape', '');
+    zone.appendChild(rect);
+    g.appendChild(zone);
+
+    addAnnotation(zone, id, x + bW / 2, y + bH / 2, bW, bH);
+  }
+}
+
+function addAnnotation(zoneEl, id, cx, cy, w, h) {
+  const fo = document.createElementNS(svgNS, 'foreignObject');
+  fo.setAttribute('x', cx - w / 2);
+  fo.setAttribute('y', cy - h / 2);
+  fo.setAttribute('width', w);
+  fo.setAttribute('height', h);
+  fo.setAttribute('class', 'anno-fo');
+  fo.dataset.id = id;
+  zoneEl.appendChild(fo);
+  renderAnnotation(id);
+}
+
+function renderAnnotation(id) {
+  const fo = document.querySelector('.anno-fo[data-id="' + id + '"]');
+  if (!fo) return;
+  fo.innerHTML = '';
+  const wrap = document.createElement('div');
+  wrap.setAttribute('xmlns', 'http://www.w3.org/1999/xhtml');
+  wrap.style.width = '100%';
+  wrap.style.height = '100%';
+  wrap.style.display = 'flex';
+  wrap.style.alignItems = 'center';
+  wrap.style.justifyContent = 'center';
+
+  if (editingId == id) {
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.value = keyMap[id].action;
+    input.addEventListener('input', e => {
+      keyMap[id].action = e.target.value;
+      persist();
+      updateShapeStyles();
+    });
+    input.addEventListener('blur', () => { editingId = null; renderAnnotation(id); updateShapeStyles(); });
+    input.addEventListener('keydown', e => { if (e.key === 'Enter') input.blur(); });
+    wrap.appendChild(input);
+    fo.appendChild(wrap);
+    setTimeout(() => input.focus(), 0);
+  } else {
+    const div = document.createElement('div');
+    div.className = 'anno';
+    const num = id >= 8 ? id - 7 : null;
+    if (num) {
+      const numSpan = document.createElement('span');
+      numSpan.className = 'num';
+      numSpan.textContent = num;
+      div.appendChild(numSpan);
+    }
+    const label = document.createElement('span');
+    label.className = 'label';
+    label.textContent = keyMap[id].action || '未設定';
+    div.appendChild(label);
+    wrap.appendChild(div);
+    fo.appendChild(wrap);
+  }
+}
+
+function updateShapeStyles() {
+  document.querySelectorAll('.zone').forEach(zone => {
+    const id = zone.dataset.id;
+    const shape = zone.querySelector('[data-shape]');
+    if (!shape) return;
+    let fill = '#1c1c1c', stroke = '#111';
+    if (editingId == id) { fill = 'var(--card-edit)'; stroke = 'var(--accent)'; }
+    shape.setAttribute('fill', fill);
+    shape.setAttribute('stroke', stroke);
+    shape.setAttribute('stroke-width', '3');
+    shape.style.transition = 'fill .15s, stroke .15s';
+  });
+}
+
+function renderAll() {
+  for (let id = 1; id <= 19; id++) {
+    if (id === undefined) continue;
+    renderAnnotation(id);
+  }
+  updateShapeStyles();
+}
+
+const TOP_ANNOTATIONS = {
+  1: [115, 90, 80, 50],
+  2: [245, 90, 80, 50],
+  4: [180, 35, 70, 40],
+  3: [180, 100, 70, 40],
+  5: [180, 165, 70, 40],
+  6: [40, 80, 70, 40],
+  7: [40, 130, 70, 40],
+};
+
+function buildTopAnnotations() {
+  Object.keys(TOP_ANNOTATIONS).forEach(id => {
+    const zone = document.querySelector('.zone[data-id="' + id + '"]');
+    if (!zone) return;
+    const [cx, cy, w, h] = TOP_ANNOTATIONS[id];
+    addAnnotation(zone, id, cx, cy, w, h);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  loadFromStorage();
+  buildSideButtons();
+  buildTopAnnotations();
+  renderAll();
+
+  document.querySelectorAll('.zone').forEach(zone => {
+    zone.addEventListener('mouseenter', () => {
+      const id = zone.dataset.id;
+      if (editingId == id) return;
+      const shape = zone.querySelector('[data-shape]');
+      shape.setAttribute('fill', 'var(--card-hover)');
+      shape.setAttribute('stroke', 'var(--accent)');
+    });
+    zone.addEventListener('mouseleave', () => {
+      const id = zone.dataset.id;
+      if (editingId == id) return;
+      updateShapeStyles();
+    });
+    zone.addEventListener('click', (e) => {
+      e.stopPropagation();
+      editingId = zone.dataset.id;
+      renderAll();
+    });
+  });
+
+  document.getElementById('svgRoot').addEventListener('click', () => {
+    if (editingId !== null) { editingId = null; renderAll(); }
+  });
+
+  document.getElementById('resetBtn').addEventListener('click', () => {
+    keyMap = JSON.parse(JSON.stringify(DEFAULT_KEYMAP));
+    localStorage.removeItem(STORAGE_KEY);
+    renderAll();
+    showToast('設定を初期化しました');
+  });
+
+  document.getElementById('importFile').addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      try {
+        const json = JSON.parse(ev.target.result);
+        if (json["1"] && json["19"]) {
+          Object.keys(json).forEach(key => {
+            if (keyMap[key] && json[key].action !== undefined) keyMap[key].action = json[key].action;
+          });
+          persist();
+          renderAll();
+          showToast('設定を読み込みました');
+        } else {
+          showToast('無効なファイル形式です');
+        }
+      } catch (err) {
+        showToast('ファイルの読み込みに失敗しました');
+      }
+    };
+    reader.readAsText(file);
+    e.target.value = null;
+  });
+
+  document.getElementById('exportBtn').addEventListener('click', () => {
+    const steelSeriesData = {
+      device: "Razer Naga V2 HyperSpeed",
+      format: "SteelSeries Compatible",
+      version: 1,
+      timestamp: new Date().toISOString(),
+      bindings: Object.keys(keyMap).reduce((acc, id) => {
+        acc['button_' + id] = keyMap[id].action;
+        return acc;
+      }, {})
+    };
+    downloadJSON(steelSeriesData, 'naga_v2_steelseries.json');
+    showToast('SteelSeries形式で書き出しました');
+  });
+
+  document.getElementById('saveBtn').addEventListener('click', () => {
+    downloadJSON(keyMap, 'naga_v2_keymap_' + new Date().toISOString().slice(0,10) + '.json');
+    showToast('JSONを保存しました');
+  });
+});
+
+function downloadJSON(obj, filename) {
+  const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(obj, null, 2));
+  const a = document.createElement('a');
+  a.setAttribute("href", dataStr);
+  a.setAttribute("download", filename);
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+}
+</script>
+</body>
+</html>
